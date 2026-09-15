@@ -1,57 +1,241 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>С Днём рождения, мама ❤️</title>
-<meta name="description" content="Любимый подарок маме на День рождения">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7e4df">
+  <meta name="description" content="Самое тёплое поздравление с Днём рождения для любимой мамы — с любовью, благодарностью и семейными воспоминаниями.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="С Днём рождения, мама ❤️">
+  <meta property="og:description" content="Цифровой подарок самому родному человеку.">
+  <meta property="og:image" content="images/photo-3.webp">
+  <title>С Днём рождения, мама ❤️</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="images/photo-3.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="ambient"></div>
-<div class="particles" aria-hidden="true"></div>
-
-<header class="hero">
-  <div class="hero-content">
-    <span class="subtitle">Самому родному человеку</span>
-    <h1>С Днём рождения, мама ❤️</h1>
-    <p>Сегодня особенный день. Я хочу сказать тебе спасибо за всю любовь, заботу, поддержку и тепло, которые ты даришь каждый день.</p>
-    <button class="open-btn" onclick="document.querySelector('#letter').scrollIntoView({behavior:'smooth'})">Открыть поздравление ✨</button>
+<body class="is-locked">
+  <a class="skip-link" href="#main">Перейти к поздравлению</a>
+  <canvas class="sparkles" aria-hidden="true"></canvas>
+  <div class="ambient" aria-hidden="true">
+    <span class="ambient__orb ambient__orb--one"></span>
+    <span class="ambient__orb ambient__orb--two"></span>
+    <span class="ambient__orb ambient__orb--three"></span>
   </div>
-</header>
+  <div class="petals" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
-<section id="letter" class="paper reveal">
-  <h2>Моё письмо тебе 💌</h2>
-  <p>Мама, ты один из самых важных людей в моей жизни. Спасибо тебе за бессонные ночи, за добрые слова, за веру в меня и за то, что всегда остаёшься рядом.</p>
-  <p>Я очень ценю каждый момент, который мы проводим вместе. Пусть в твоей жизни будет больше улыбок, радости, путешествий, приятных событий и исполнения всех желаний.</p>
-  <p>Желаю тебе крепкого здоровья, счастья и огромного количества счастливых дней. Я тебя очень люблю ❤️</p>
-</section>
+  <div class="opening" role="dialog" aria-modal="true" aria-labelledby="opening-title">
+    <div class="opening__halo" aria-hidden="true"></div>
+    <div class="opening__content">
+      <p class="eyebrow">Для самого родного человека</p>
+      <div class="gift" aria-hidden="true">
+        <span class="gift__lid"></span>
+        <span class="gift__box"></span>
+        <span class="gift__ribbon"></span>
+        <span class="gift__bow gift__bow--left"></span>
+        <span class="gift__bow gift__bow--right"></span>
+        <span class="gift__heart">♥</span>
+      </div>
+      <h1 id="opening-title">Тебе, мама</h1>
+      <p>Здесь собрано то, что хочется сказать не только сегодня, а каждый день.</p>
+      <button class="button button--primary" id="openGift" type="button">
+        <span>Открыть подарок</span>
+        <span aria-hidden="true">✦</span>
+      </button>
+    </div>
+  </div>
 
-<section class="gallery reveal">
-<h2>Наш семейный альбом 📸</h2>
-<div class="photos">
-<img src="images/photo1.jpg" alt="Семейное воспоминание">
-<img src="images/photo2.jpg" alt="Семейное воспоминание">
-<img src="images/photo3.jpg" alt="Семейное воспоминание">
-<img src="images/photo4.jpg" alt="Семейное воспоминание">
-<img src="images/photo5.jpg" alt="Семейное воспоминание">
-</div>
-</section>
+  <div class="progress" aria-hidden="true"><span></span></div>
 
-<section class="timeline reveal">
-<h2>Самые тёплые моменты ✨</h2>
-<div class="moment">❤️ Вместе создаём воспоминания</div>
-<div class="moment">🌸 Семья — самое ценное</div>
-<div class="moment">⭐ Спасибо за каждый день</div>
-</section>
+  <header class="hero" id="top">
+    <div class="hero__rings" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="hero__photo hero__photo--left parallax" data-depth="0.08" aria-hidden="true">
+      <img src="images/photo-1-thumb.webp" alt="">
+    </div>
+    <div class="hero__photo hero__photo--right parallax" data-depth="0.12" aria-hidden="true">
+      <img src="images/photo-5-thumb.webp" alt="">
+    </div>
+    <div class="hero__content">
+      <p class="eyebrow hero__eyebrow">Сегодня твой особенный день</p>
+      <p class="hero__date">С любовью • навсегда</p>
+      <h2 class="hero__title">
+        <span>С Днём рождения,</span>
+        <em>мама</em><span class="hero__heart" aria-hidden="true">♥</span>
+      </h2>
+      <p class="hero__lead">Ты — тепло нашего дома, моя опора и человек, чья любовь делает весь мир добрее. Этот маленький подарок — о том, как сильно я тебя люблю и ценю.</p>
+      <button class="button button--primary hero__button" data-scroll-to="letter" type="button">
+        <span>Читать поздравление</span>
+        <span aria-hidden="true">↓</span>
+      </button>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"><span></span>листай сердцем</div>
+  </header>
 
-<section class="final reveal">
-<h2>Спасибо тебе, мама ❤️</h2>
-<p>Пусть каждый твой день будет наполнен счастьем, теплом и любовью.</p>
-<h3>Я тебя люблю ❤️</h3>
-</section>
+  <main id="main">
+    <section class="section letter" id="letter" aria-labelledby="letter-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Самые важные слова</p>
+        <h2 id="letter-title">Моё письмо тебе</h2>
+        <p>То, что не всегда получается сказать вслух</p>
+      </div>
 
-<footer>Created by <a href="https://sleepkidd.ru">Sleepkidd Studio</a></footer>
-<script src="script.js"></script>
+      <article class="letter-card reveal">
+        <div class="letter-card__seal" aria-hidden="true">♥</div>
+        <p class="letter-card__hello">Моя любимая мама!</p>
+        <p>Сегодня я хочу не просто поздравить тебя с Днём рождения. Я хочу напомнить, насколько ты важна для меня. Ты — человек, рядом с которым всегда становится спокойнее, теплее и светлее. Твоя любовь окружает меня даже тогда, когда между нами расстояние или когда обычные заботы не дают сказать всё самое главное.</p>
+        <p>Спасибо тебе за каждое доброе слово, за терпение и за веру в меня. За то, что умеешь поддержать именно тогда, когда это особенно нужно. За то, что радуешься моим победам сильнее меня и переживаешь мои трудности как свои. Я вижу и ценю всё, что ты делаешь, даже если не всегда говорю об этом.</p>
+        <p>Ты научила меня не сдаваться, оставаться человеком, любить близких и ценить простые моменты. Во мне так много хорошего именно благодаря тебе. Твоя забота — мой тихий дом, куда мысленно всегда можно вернуться.</p>
+        <p>Я очень хочу, чтобы впереди у тебя было как можно больше счастливых дней. Чтобы ты чаще улыбалась, отдыхала, исполняла свои мечты и чувствовала, как сильно тебя любят. Пусть здоровье будет крепким, сердце — спокойным, а рядом всегда будут дорогие и верные люди.</p>
+        <p>Пусть каждый новый год твоей жизни приносит не возраст, а новые причины радоваться: приятные поездки, неожиданные подарки, уютные вечера, красивые рассветы и моменты, которые хочется бережно хранить в памяти.</p>
+        <p>Мама, ты заслуживаешь всего самого прекрасного. И что бы ни происходило, знай: я рядом, я тобой горжусь, я бесконечно благодарен тебе и очень-очень тебя люблю.</p>
+        <footer class="letter-card__signature">
+          <span>С любовью,</span>
+          <strong>твой сын ❤️</strong>
+        </footer>
+      </article>
+    </section>
+
+    <section class="section wishes" id="wishes" aria-labelledby="wishes-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Пусть сбудется всё</p>
+        <h2 id="wishes-title">Столько пожеланий, сколько звёзд</h2>
+        <p>И каждое — от всего сердца</p>
+      </div>
+      <div class="wishes-grid">
+        <article class="wish-card reveal"><span>01</span><i aria-hidden="true">✦</i><h3>Крепкого здоровья</h3><p>Пусть силы никогда не заканчиваются, а каждый день начинается с лёгкости и хорошего самочувствия.</p></article>
+        <article class="wish-card reveal"><span>02</span><i aria-hidden="true">☀</i><h3>Солнечного настроения</h3><p>Пусть даже в пасмурный день внутри будет светло, спокойно и радостно.</p></article>
+        <article class="wish-card reveal"><span>03</span><i aria-hidden="true">♥</i><h3>Безграничной любви</h3><p>Пусть любовь близких окружает, согревает и каждый день напоминает, какая ты особенная.</p></article>
+        <article class="wish-card reveal"><span>04</span><i aria-hidden="true">∞</i><h3>Долгих счастливых лет</h3><p>Пусть впереди ждёт ещё бесконечно много прекрасных глав твоей истории.</p></article>
+        <article class="wish-card reveal"><span>05</span><i aria-hidden="true">✿</i><h3>Красивых моментов</h3><p>Пусть жизнь чаще удивляет приятными событиями, встречами и добрыми чудесами.</p></article>
+        <article class="wish-card reveal"><span>06</span><i aria-hidden="true">⌂</i><h3>Домашнего уюта</h3><p>Пусть дома всегда ждут тепло, смех, вкусный чай и люди, которым ты дорога.</p></article>
+        <article class="wish-card reveal"><span>07</span><i aria-hidden="true">☆</i><h3>Исполнения желаний</h3><p>Пусть самые сокровенные мечты находят дорогу в реальность — одна за другой.</p></article>
+        <article class="wish-card reveal"><span>08</span><i aria-hidden="true">♫</i><h3>Душевной гармонии</h3><p>Пусть сердце будет спокойным, мысли — светлыми, а в душе всегда звучит любимая музыка.</p></article>
+        <article class="wish-card reveal"><span>09</span><i aria-hidden="true">◇</i><h3>Новых впечатлений</h3><p>Пусть будет больше путешествий, красивых мест и историй, которые хочется рассказывать.</p></article>
+        <article class="wish-card reveal"><span>10</span><i aria-hidden="true">☕</i><h3>Времени для себя</h3><p>Пусть всегда находится время отдохнуть, помечтать и просто делать то, что нравится.</p></article>
+        <article class="wish-card reveal"><span>11</span><i aria-hidden="true">♕</i><h3>Поводов гордиться</h3><p>Пусть каждый новый день подтверждает: всё, что ты вложила в семью, стало настоящим счастьем.</p></article>
+        <article class="wish-card reveal"><span>12</span><i aria-hidden="true">✧</i><h3>Чудес рядом</h3><p>Пусть маленькие чудеса встречаются повсюду, а большие случаются именно тогда, когда нужны.</p></article>
+      </div>
+    </section>
+
+    <section class="section gallery" id="gallery" aria-labelledby="gallery-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Наша история в кадрах</p>
+        <h2 id="gallery-title">Семейный альбом</h2>
+        <p>Пять фотографий — и тысячи тёплых чувств</p>
+      </div>
+      <div class="album">
+        <button class="photo-card photo-card--wide reveal" type="button" data-full="images/photo-1.webp" data-caption="Когда рядом можно быть собой" aria-label="Открыть фотографию: Когда рядом можно быть собой">
+          <img src="images/photo-1-thumb.webp" alt="Весёлое семейное фото мамы и сына" width="720" height="540" loading="lazy">
+          <span><strong>Счастье — смеяться вместе</strong><small>Даже самые смешные моменты становятся любимыми</small></span>
+        </button>
+        <button class="photo-card reveal" type="button" data-full="images/photo-2.webp" data-caption="Вместе в важные дни" aria-label="Открыть фотографию: Вместе в важные дни">
+          <img src="images/photo-2-thumb.webp" alt="Семейная фотография на празднике" width="720" height="540" loading="lazy">
+          <span><strong>Рядом в важные дни</strong><small>Семья делает праздник настоящим</small></span>
+        </button>
+        <button class="photo-card reveal" type="button" data-full="images/photo-3.webp" data-caption="Праздник, который мы разделили" aria-label="Открыть фотографию: Праздник, который мы разделили">
+          <img src="images/photo-3-thumb.webp" alt="Мама и сын на праздновании выпускного" width="720" height="540" loading="lazy">
+          <span><strong>Наши праздники</strong><small>Воспоминания, которые всегда вызывают улыбку</small></span>
+        </button>
+        <button class="photo-card photo-card--portrait reveal" type="button" data-full="images/photo-4.webp" data-caption="Тёплый семейный вечер" aria-label="Открыть фотографию: Тёплый семейный вечер">
+          <img src="images/photo-4-thumb.webp" alt="Мама и сын дома" width="540" height="720" loading="lazy">
+          <span><strong>Тепло родного дома</strong><small>Главное место — там, где ты</small></span>
+        </button>
+        <button class="photo-card photo-card--wide reveal" type="button" data-full="images/photo-5.webp" data-caption="Ты всегда рядом с моими победами" aria-label="Открыть фотографию: Ты всегда рядом с моими победами">
+          <img src="images/photo-5-thumb.webp" alt="Мама рядом с сыном на выпускном" width="720" height="540" loading="lazy">
+          <span><strong>Ты веришь в меня</strong><small>И поэтому любые вершины становятся ближе</small></span>
+        </button>
+      </div>
+      <p class="gallery__hint reveal"><span aria-hidden="true">↗</span> Нажми на фотографию, чтобы открыть её полностью</p>
+    </section>
+
+    <section class="section memories" id="memories" aria-labelledby="memories-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Не по датам — по чувствам</p>
+        <h2 id="memories-title">Самые тёплые моменты</h2>
+        <p>Наша история продолжается каждый день</p>
+      </div>
+      <div class="timeline">
+        <article class="memory reveal">
+          <div class="memory__marker"><span>01</span></div>
+          <div class="memory__content"><p class="memory__meta">С самого детства</p><h3>Твоя забота всегда со мной</h3><p>Ты учила, поддерживала, обнимала и превращала обычные дни в самые тёплые воспоминания.</p></div>
+        </article>
+        <article class="memory reveal">
+          <div class="memory__marker"><span>02</span></div>
+          <div class="memory__content"><p class="memory__meta">Каждый семейный праздник</p><h3>Ты создаёшь атмосферу дома</h3><p>Там, где твой голос, улыбка и забота, всегда уютно. Именно ты объединяешь нас и делаешь семью сильнее.</p></div>
+        </article>
+        <article class="memory reveal">
+          <div class="memory__marker"><span>03</span></div>
+          <div class="memory__content"><p class="memory__meta">Во все важные дни</p><h3>Ты рядом с моими победами</h3><p>В каждом моём достижении есть частичка твоей веры, твоего терпения и твоего большого сердца.</p></div>
+        </article>
+        <article class="memory reveal">
+          <div class="memory__marker"><span>04</span></div>
+          <div class="memory__content"><p class="memory__meta">Сегодня</p><h3>Я особенно хочу сказать спасибо</h3><p>За прошлое, настоящее и всё хорошее, что ещё ждёт нас впереди. За возможность называть тебя мамой.</p></div>
+        </article>
+        <article class="memory reveal">
+          <div class="memory__marker"><span>∞</span></div>
+          <div class="memory__content"><p class="memory__meta">Всегда</p><h3>Впереди ещё столько счастливых моментов</h3><p>Новые встречи, праздники, фотографии, поездки и вечера, когда мы просто будем рядом.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section gratitude" id="gratitude" aria-labelledby="gratitude-title">
+      <div class="gratitude__inner reveal">
+        <p class="eyebrow">За миллион важных мелочей</p>
+        <h2 id="gratitude-title">Спасибо тебе, мама</h2>
+        <div class="gratitude__words" aria-label="Слова благодарности">
+          <span>за любовь</span><i>•</i><span>за терпение</span><i>•</i><span>за поддержку</span><i>•</i><span>за доброту</span><i>•</i><span>за силу</span><i>•</i><span>за наш дом</span><i>•</i><span>за веру в меня</span><i>•</i><span>за каждый день</span>
+        </div>
+        <p class="gratitude__text">Спасибо за звонки «просто узнать, как дела», за советы, которые понимаешь особенно хорошо со временем, за смех, за волнения и за тихую уверенность, что я никогда не один. Твоё большое сердце — один из главных подарков в моей жизни.</p>
+      </div>
+    </section>
+
+    <section class="section promise" aria-labelledby="promise-title">
+      <div class="promise__photo reveal">
+        <img src="images/photo-3.webp" alt="Мама и сын вместе на празднике" width="1800" height="1350" loading="lazy">
+      </div>
+      <div class="promise__content reveal">
+        <p class="eyebrow">Моё главное обещание</p>
+        <h2 id="promise-title">Я всегда буду рядом</h2>
+        <p>Так же, как ты была рядом со мной: в радости, в трудные минуты, в самые обычные дни и в самые важные моменты.</p>
+        <blockquote>«Мамина любовь — это свет, который остаётся с нами навсегда»</blockquote>
+      </div>
+    </section>
+
+    <section class="finale" id="finale" aria-labelledby="finale-title">
+      <div class="finale__stars" aria-hidden="true"></div>
+      <div class="finale__content reveal">
+        <p class="eyebrow">И самое главное</p>
+        <h2 id="finale-title">Я тебя люблю</h2>
+        <span class="finale__heart" aria-hidden="true">♥</span>
+        <p>Будь счастлива сегодня, завтра и каждый следующий день.<br>С Днём рождения, моя любимая мама!</p>
+        <button class="button button--light" id="sendLove" type="button"><span>Отправить миллион сердечек</span><span aria-hidden="true">♥</span></button>
+        <p class="finale__note" id="loveNote" aria-live="polite">Для тебя — вся моя любовь</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Сделано с любовью для мамы</p>
+    <a href="https://sleepkidd.ru" target="_blank" rel="noopener noreferrer">Created by <strong>Sleepkidd Studio</strong></a>
+    <button type="button" data-scroll-to="top" aria-label="Вернуться в начало">↑</button>
+  </footer>
+
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр семейной фотографии" aria-hidden="true">
+    <button class="lightbox__close" type="button" aria-label="Закрыть просмотр">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Предыдущая фотография">‹</button>
+    <figure>
+      <img src="" alt="">
+      <figcaption></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Следующая фотография">›</button>
+    <p class="lightbox__count" aria-live="polite"></p>
+  </div>
+
+  <noscript><style>.opening{display:none!important}body{overflow:auto!important}.reveal{opacity:1!important;transform:none!important}</style><div class="noscript">Включите JavaScript, чтобы увидеть все праздничные эффекты. Само поздравление и фотографии доступны и без них.</div></noscript>
+  <script src="script.js" defer></script>
 </body>
 </html>

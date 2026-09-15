@@ -1,0 +1,12 @@
+{
+  "name": "c-dnem-rozdenia-mama",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Интерактивный сайт-поздравление с Днём рождения для мамы",
+  "scripts": {
+    "test": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
